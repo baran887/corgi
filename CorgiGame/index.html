@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>Welsh Corgi Run Game</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="game-container">
+
+    <!-- 헤더 -->
+    <div class="game-header">
+      <h1>Corgi Game</h1>
+      <div class="sound-control">
+        <div class="sound-row">
+            <span>🎵 배경음</span>
+            <input type="range" id="bgmSlider" min="0" max="1" step="0.01" value="0.4" />
+        </div>
+        <div class="sound-row">
+            <span>🔊 효과음</span>
+            <input type="range" id="sfxSlider" min="0" max="1" step="0.01" value="0.6" />
+        </div>
+        </div>
+    </div>
+
+    <!-- 플레이 설명 -->
+    <div class="how-to-play">
+      <h2>🎮 플레이 방법</h2>
+      <ul>
+        <li>스페이스바 / ↑ : 점프</li>
+        <li>공중에서 ↑ : 이단 점프</li>
+        <li>↓ : 슬라이드 (몸 높이 반으로 낮아짐)</li>
+        <li>장애물을 넘으면 +100점</li>
+        <li>하트를 먹으면 체력 +1</li>
+        <li>총 체력 3개, 0이 되면 게임 오버</li>
+      </ul>
+    </div>
+
+    <!-- 캔버스 + HUD -->
+    <div class="canvas-wrapper">
+
+      <!-- HUD (점수, 체력) -->
+      <div id="hud">
+        <div id="scoreDisplay">점수: 0</div>
+        <div id="lifeDisplay">
+          <span class="life-heart">❤️</span>
+          <span class="life-heart">❤️</span>
+          <span class="life-heart">❤️</span>
+        </div>
+      </div>
+
+      <!-- 게임 캔버스 -->
+      <canvas id="gameCanvas" width="900" height="350"></canvas>
+
+      <!-- 시작 화면 -->
+      <div id="startScreen" class="overlay active">
+        <div class="overlay-content">
+          <h2>Corgi Game</h2>
+          <p id="bestScoreText">최고 점수: 0</p>
+          <p>스페이스바를 눌러 시작하세요</p>
+        </div>
+      </div>
+
+      <!-- 게임오버 화면 -->
+      <div id="gameOverScreen" class="overlay">
+        <div class="overlay-content">
+          <h2>Game Over</h2>
+          <p id="finalScoreText"></p>
+
+          <div id="scoreHistoryList" style="margin-top:15px; text-align:left;"></div>
+
+          <p style="margin-top:12px;">스페이스바를 눌러 다시 시작</p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- 숨겨진 스프라이트 이미지들 -->
+  <img id="spriteCorgi" src="corgi.png" style="display:none;" />
+  <img id="spriteLogHorizontal" src="log_horizontal.png" style="display:none;" />
+  <img id="spriteLogVertical" src="log_vertical.png" style="display:none;" />
+  <img id="spriteBird" src="bird.png" style="display:none;" />
+  <img id="spriteHeart" src="heart.png" style="display:none;" />
+
+  <script src="game.js"></script>
+
+</body>
+</html>
